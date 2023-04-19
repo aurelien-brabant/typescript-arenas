@@ -9,7 +9,7 @@ Your task is to add a `decrypt` method to your `MessageRouterCipher` class.
 ```typescript
 export class MessageRouterCipher {
   encrypt(message: string, shift: number): string {
-    // your previous encru  ption logic here
+    // your previous encryption logic here
   }
 
   decrypt(message: string, shift: number): string {

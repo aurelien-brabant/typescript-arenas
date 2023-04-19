@@ -7,169 +7,116 @@ describe('MessageRouterCipher', () => {
         cipher = new MessageRouterCipher();
     });
 
-    describe('should encrypt a message with a given shift', () => {
-        it('encrypt a message with a shift of 0 (should not change the message)', () => {
-            const message = 'Hello World!';
+    describe('should decrypt a message with a given shift', () => {
+        it('decrypt a message with a shift of 0 (should not change the message)', () => {
             const shift = 0;
-            const encryptedMessage = cipher.encrypt(message, shift);
-
-            expect(encryptedMessage).toBe(message);
-        });
-
-        it('encrypt a message with a shift of 1', () => {
             const message = 'Hello World!';
-            const shift = 1;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = 'Ifmmp!Xpsme"';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of 2', () => {
-            const message = 'Hello World!';
-            const shift = 2;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = 'Jgnnq"Yqtnf#';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of 3', () => {
-            const message = 'Hello World!';
-            const shift = 3;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = 'Khoor#Zruog$';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of 5', () => {
-            const message = 'Hello World!';
-            const shift = 5;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = 'Mjqqt%\\twqi&';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of 10', () => {
-            const message = 'Hello World!';
-            const shift = 10;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = 'Rovvy*ay|vn+';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of 15', () => {
-            const message = 'Hello World!';
-            const shift = 15;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = 'Wt{{~/f~"{s0';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of 32', () => {
-            const message = 'Hello World!';
-            const shift = 32;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = 'h&--0@w03-%A';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of 64', () => {
-            const message = 'Hello World!';
-            const shift = 64;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = ')FMMP`8PSMEa';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of -5', () => {
-            const message = 'Hello World!';
-            const shift = -5;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = 'C`ggjzRjmg_{';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of -10', () => {
-            const message = 'Hello World!';
-            const shift = -10;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = '>[bbeuMehbZv';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of -15', () => {
-            const message = 'Hello World!';
-            const shift = -15;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = '9V]]`pH`c]Uq';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of -32', () => {
-            const message = 'Hello World!';
-            const shift = -32;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = '(ELLO_7ORLD`';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('encrypt a message with a shift of -64', () => {
-            const message = 'Hello World!';
-            const shift = -64;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = 'g%,,/?v/2,$@';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-    });
-
-    describe("should wrap around the ASCII's table printable characters", () => {
-        it('last printable character should wrap around to the first printable character', () => {
-            const message = '~';
-            const shift = 1;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const expectedEncryptedMessage = ' ';
-
-            expect(encryptedMessage).toBe(expectedEncryptedMessage);
-        });
-
-        it('positive shift of n should be reversed by a negative shift of n', () => {
-            const message = 'Hello World!';
-            const shift = 10;
-            const encryptedMessage = cipher.encrypt(message, shift);
-            const decryptedMessage = cipher.encrypt(encryptedMessage, -shift);
+            const decryptedMessage = cipher.decrypt(message, shift);
 
             expect(decryptedMessage).toBe(message);
         });
 
-        it('should get the same message if shifting by the number of printable characters (126 - 32 + 1 = 95)', () => {
-            const message = 'Hello, World!';
-            const shift = 126 - 32 + 1;
-            const encryptedMessage = cipher.encrypt(message, shift);
+        it('decrypt a message with a shift of 1', () => {
+            const shift = 1;
+            const message = 'EprOTeVThlY\'FNF$eIM[F_BdHh8gXW"6[:S7qEo:';
+            const decryptedMessage = cipher.decrypt(message, shift);
+            const expectedDecryptedMessage = 'DoqNSdUSgkX&EME#dHLZE^AcGg7fWV!5Z9R6pDn9';
 
-            expect(encryptedMessage).toBe(message);
+            expect(decryptedMessage).toBe(expectedDecryptedMessage);
         });
 
-        it('should get the same message if shifting by any multiple of 95 (see test above)', () => {
-            const message = 'Hello, World!';
+        it('decrypt a message with a shift of 2', () => {
+            const shift = 2;
+            const message = "5\\ZwR44JTG[wY[%rV:{vZ4,h4XC8x,tR'RO:hE";
+            const decryptedMessage = cipher.decrypt(message, shift);
+            const expectedDecryptedMessage = '3ZXuP22HREYuWY#pT8ytX2*f2VA6v*rP%PM8fC';
 
-            for (let i = 0; i !== 10; ++i) {
+            expect(decryptedMessage).toBe(expectedDecryptedMessage);
+        });
+
+        it('decrypt a message with a shift of 3', () => {
+            const shift = 3;
+            const message = 'Mxolxv#zdwfkhv#|rx$';
+            const decryptedMessage = cipher.decrypt(message, shift);
+            const expectedDecryptedMessage = 'Julius watches you!';
+
+            expect(decryptedMessage).toBe(expectedDecryptedMessage);
+        });
+
+        it('decrypt a message with a shift of 5', () => {
+            const shift = 5;
+            const message = 'Qttpx%qnpj%~tz%kfnqji&%Gtttm&';
+            const decryptedMessage = cipher.decrypt(message, shift);
+            const expectedDecryptedMessage = 'Looks like you failed! Boooh!';
+
+            expect(decryptedMessage).toBe(expectedDecryptedMessage);
+        });
+
+        it('decrypt a message with a shift of 10', () => {
+            const shift = 10;
+            const message =
+                '^rs}*~o#~6*$y *}rJ vn*nom|$z~+*Sp*$y *ny*xy~*} mmoon*k~*~rs}6*$y *"svv*xy~*k~*kx$~rsxq*ov}o+';
+            const decryptedMessage = cipher.decrypt(message, shift);
+            const expectedDecryptedMessage =
+                'This text, you sh@uld decrypt! If you do not succeed at this, you will not at anything else!';
+
+            expect(decryptedMessage).toBe(expectedDecryptedMessage);
+        });
+
+        it('decrypt a message with a shift of 32', () => {
+            const shift = 32;
+            const message = 'b&*/(@".";*/(@*4@$00-&3@5)"/@&7&3:5)*/(@&-4&N';
+            const decryptedMessage = cipher.decrypt(message, shift);
+            const expectedDecryptedMessage = 'Being amazing is cooler than everything else.';
+
+            expect(decryptedMessage).toBe(expectedDecryptedMessage);
+        });
+
+        it('decrypt a message with a shift of -2', () => {
+            const shift = -2;
+            const message = '@cgle}_k_xgle}gq}_k_xgle~';
+            const decryptedMessage = cipher.decrypt(message, shift);
+            const expectedDecryptedMessage = 'Being amazing is amazing!';
+
+            expect(decryptedMessage).toBe(expectedDecryptedMessage);
+        });
+
+        it('decrypt a message with a shift of -32', () => {
+            const shift = -32;
+            const message = '"EING_AMAZING_IS_COOLER_THAN_EVERYTHING_ELSEm';
+            const decryptedMessage = cipher.decrypt(message, shift);
+            const expectedDecryptedMessage = 'Being amazing is cooler than everything else.';
+
+            expect(decryptedMessage).toBe(expectedDecryptedMessage);
+        });
+    });
+
+    describe("should wrap around the ASCII's table printable characters", () => {
+        it('decrypting a message with a shift of 95 should preserve the original string', () => {
+            const shift = 95;
+            const message = 'Hello World!';
+            const decryptedMessage = cipher.decrypt(message, shift);
+
+            expect(decryptedMessage).toBe(message);
+        });
+
+        it('decrypting a message with any multiple of 95 should preserve the original string', () => {
+            for (let i = 1; i <= 100; i++) {
                 const shift = 95 * i;
-                const encryptedMessage = cipher.encrypt(message, shift);
+                const message = 'Hello World!';
+                const decryptedMessage = cipher.decrypt(message, shift);
 
-                expect(encryptedMessage).toBe(message);
+                expect(decryptedMessage).toBe(message);
             }
+        });
+
+        it('decrypting the first printable character of the ASCII table with a shift of 1 should transform it to the last printable one', () => {
+            const shift = 1;
+            const message = ' ';
+            const decryptedMessage = cipher.decrypt(message, shift);
+            const expectedDecryptedMessage = '~';
+
+            expect(decryptedMessage).toBe(expectedDecryptedMessage);
         });
     });
 });
