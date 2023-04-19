@@ -11,7 +11,8 @@
   "challenges": [
     "message-router-encode",
     "message-router-decode",
-    "julius-cipher"
+    "julius-cipher",
+    "decrypt-it"
   ],
   "slideDecks": [],
   "badgeUrl": null,
